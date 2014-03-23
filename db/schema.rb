@@ -11,11 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140322011818) do
+ActiveRecord::Schema.define(version: 20140323055204) do
 
   create_table "components", force: true do |t|
     t.string   "name"
     t.integer  "component_weight"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "course_id"
+  end
+
+  create_table "course", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

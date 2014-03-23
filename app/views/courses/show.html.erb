@@ -10,8 +10,18 @@
 
 <br />
 
-
 <p>
+	<h4> Components </h4>
+
+	<tbody>
+	    <% @course.components.each do |component| %>
+	      <tr>
+	        <td><%= component.name %></td>
+	        <td><%= component.component_weight %></td>
+	      </tr>
+	    <% end %>
+	  </tbody>
+	</table>
 
 </p>	
 
@@ -19,4 +29,6 @@
 <%= link_to 'Edit', edit_course_path(@course) %> |
 <%= link_to 'Back', courses_path %> 
 <br />
-<button type="button" class="btn btn-info"><%= link_to 'Add Component', new_component_path(@course) %></button>
+<button type="button" class="btn btn-info">
+	<%= link_to 'Add Component', new_course_component_path(@course, @component) %>
+</button>

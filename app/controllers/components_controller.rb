@@ -4,7 +4,8 @@ class ComponentsController < ApplicationController
   # GET /components
   # GET /components.json
   def index
-    @components = Component.all
+    @course = Course.find(params[:course_id])
+    @components = @course.components.all
   end
 
   # GET /components/1
@@ -15,17 +16,21 @@ class ComponentsController < ApplicationController
 
   # GET /components/new
   def new
-    @component = Component.new
+    @course = Course.find(params[:course_id])
+    @component = @course.components.new
   end
 
   # GET /components/1/edit
   def edit
+    @course = Course.find(params[:course_id])
+
   end
 
   # POST /components
   # POST /components.json
   def create
-    @component = Component.new(component_params)
+    @course = Course.find(params[:course_id])
+    @component = @course.components.new(component_params)
 
     respond_to do |format|
       if @component.save
@@ -41,6 +46,8 @@ class ComponentsController < ApplicationController
   # PATCH/PUT /components/1
   # PATCH/PUT /components/1.json
   def update
+    @course = Course.find(params[:course_id])
+
     respond_to do |format|
       if @component.update(component_params)
         format.html { redirect_to @component, notice: 'Component was successfully updated.' }
@@ -55,6 +62,8 @@ class ComponentsController < ApplicationController
   # DELETE /components/1
   # DELETE /components/1.json
   def destroy
+    @course = Course.find(params[:course_id])
+
     @component.destroy
     respond_to do |format|
       format.html { redirect_to components_url }
@@ -65,7 +74,8 @@ class ComponentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_component
-      @component = Component.find(params[:id])
+      @course = Course.find(params[:course_id])
+      @component = @course.components.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

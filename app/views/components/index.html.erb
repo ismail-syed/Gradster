@@ -17,8 +17,8 @@
         <td><%= component.name %></td>
         <td><%= component.component_weight %></td>
         <td><%= link_to 'Show', component %></td>
-        <td><%= link_to 'Edit', edit_component_path(component) %></td>
-        <td><%= link_to 'Destroy', component, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_component_path(@course, component) %></td>
+        <td><%= link_to 'Destroy', (@course, component), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
