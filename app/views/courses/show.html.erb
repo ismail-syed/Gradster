@@ -1,34 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @course.name %>
-</p>
+<div class="title">
+	<p>
+	  <strong>Name:</strong>
+	  <%= @course.name %>
+	</p>
+</div>
 
-
-
-
-<br />
-
-<p>
+<div class="components">
 	<h4> Components </h4>
-
-	<tbody>
+	<span>
 	    <% @course.components.each do |component| %>
-	      <tr>
-	        <td><%= component.name %></td>
-	        <td><%= component.component_weight %></td>
-	      </tr>
+	      | <%= component.name %> | 
+	      <%= component.component_weight %> |
 	    <% end %>
-	  </tbody>
-	</table>
+	</span>
 
-</p>	
+</div>	
 
 
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %> 
-<br />
+| <%= link_to 'Edit', edit_course_path(@course) %> |
+<%= link_to 'Back', courses_path %> |
+
+<div class="add_component_button">
 <button type="button" class="btn btn-info">
 	<%= link_to 'Add Component', new_course_component_path(@course, @component) %>
 </button>
+</div>

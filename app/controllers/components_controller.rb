@@ -17,7 +17,7 @@ class ComponentsController < ApplicationController
   # GET /components/new
   def new
     @course = Course.find(params[:course_id])
-    @component = @course.components.new
+    @component = Component.new
   end
 
   # GET /components/1/edit
