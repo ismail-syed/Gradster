@@ -5,5 +5,7 @@ I had issues with applying twitter bootstrap to grade-calc for some reason so I 
 
 ====Updates
 -Implemented Twitter bootstrap 
+
 -Fixed components form issue 
+
 -Added edit component link feature but cancel edit component doesn't work
