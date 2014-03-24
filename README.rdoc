@@ -2,6 +2,8 @@ Soooooooo, lol,
 I had issues with applying twitter bootstrap to grade-calc for some reason so I just redesgined grade-calc from scratch since it wasn't even that far into development. 
 
 
+
 ====Updates
--Implemented Twitter bootstrap 
+-Implemented Twitter bootstrap
+
 -Fixed components form issue 
