@@ -1,11 +1,15 @@
 <p id="notice"><%= notice %></p>
 
+<span>
 <div class="title">
-	<p>
 	  <strong>Name:</strong>
 	  <%= @course.name %>
-	</p>
 </div>
+
+| <%= link_to 'Edit', edit_course_path(@course) %> |
+<%= link_to 'Back', courses_path %> |
+
+</span>
 
 <div class="components">
 	<h4> Components </h4>
@@ -19,8 +23,6 @@
 </div>	
 
 
-| <%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %> |
 
 <div class="add_component_button">
 <button type="button" class="btn btn-info">
