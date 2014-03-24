@@ -17,10 +17,11 @@
 		<ol>
 	    <span>
 			    <% @course.components.each do |component| %>
-	    	<li>
-			      <%= component.name %>  -> 
-			     <%= component.component_weight %> % 
-			  </li>
+			    	<li>
+					     <%= component.name %>  -> 
+					     <%= component.component_weight %> %
+					  	 <%= link_to 'Edit', edit_course_component_path(component.course, component)%>
+					  </li>
 			    <% end %>
 		  </span>
 		</ol>    
