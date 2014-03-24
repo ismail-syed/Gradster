@@ -34,7 +34,7 @@ class ComponentsController < ApplicationController
 
     respond_to do |format|
       if @component.save
-        format.html { redirect_to @component, notice: 'Component was successfully created.' }
+        format.html { redirect_to @course, notice: 'Component was successfully created.' }
         format.json { render action: 'show', status: :created, location: @component }
       else
         format.html { render action: 'new' }

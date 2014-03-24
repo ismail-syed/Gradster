@@ -4,5 +4,4 @@ I had issues with applying twitter bootstrap to grade-calc for some reason so I 
 
 ====Updates
 -Implemented Twitter bootstrap 
-
-Issue: After adding the <em>components</em> route as a sub-resource to <em>grades</em> there was an issue with the <em>componenets</em> form.   
+-Fixed components form issue 

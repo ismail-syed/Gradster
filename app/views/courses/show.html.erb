@@ -14,10 +14,17 @@
 <div class="components">
 	<h4> Components </h4>
 	<span>
-	    <% @course.components.each do |component| %>
-	      | <%= component.name %> | 
-	      <%= component.component_weight %> |
-	    <% end %>
+		<ol>
+	    <span>
+			    <% @course.components.each do |component| %>
+	    	<li>
+			      <%= component.name %>  -> 
+			     <%= component.component_weight %> % 
+			  </li>
+			    <% end %>
+		  </span>
+		</ol>    
+
 	</span>
 
 </div>	

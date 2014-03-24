@@ -1,6 +1,5 @@
 <h1>New component</h1>
 
-<%= render partial:	@course.components%>
+<%= render 'form' %>
 
-
-<%= link_to 'Back', course_components_path %>
+<%= link_to 'Back', course_path(@course) %>
