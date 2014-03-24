@@ -4,12 +4,6 @@ I had issues with applying twitter bootstrap to grade-calc for some reason so I 
 
 
 ====Updates
-<<<<<<< HEAD
 -Implemented Twitter bootstrap 
 -Fixed components form issue 
 -Added edit component link feature but cancel edit component doesn't work
-=======
--Implemented Twitter bootstrap
-
--Fixed components form issue 
->>>>>>> b2a5897a884541d457813942793cf8ac5246cc04
