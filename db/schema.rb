@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140323055204) do
+ActiveRecord::Schema.define(version: 20140326022055) do
 
   create_table "components", force: true do |t|
     t.string   "name"
@@ -31,6 +31,13 @@ ActiveRecord::Schema.define(version: 20140323055204) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "marks", force: true do |t|
+    t.integer  "mark"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "component_id"
   end
 
 end
