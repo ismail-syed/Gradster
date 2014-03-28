@@ -16,6 +16,7 @@ body{
 }
 
 
+
 /*//-- show.html.erb -- //*/
 .title{
 	font-family: "Arial Black", Gadget, sans-serif; 
@@ -27,9 +28,11 @@ body{
 	border-bottom: solid 1px #CCC;
 
 }
-
 .components{
-	padding: 40px 0px;
+	padding-top: 40px;
+}
+.component{
+	padding-bottom: 25px;
 }
 
 
@@ -37,3 +40,6 @@ body{
 .buttons{
 	padding-top: 50px;
 }
+
+
+

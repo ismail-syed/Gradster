@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20140326022055) do
     t.datetime "updated_at"
   end
 
-  create_table "marks", force: true do |t|
+  create_table "evaluations", force: true do |t|
     t.integer  "mark"
     t.datetime "created_at"
     t.datetime "updated_at"

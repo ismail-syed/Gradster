@@ -1,10 +1,7 @@
 Gradster::Application.routes.draw do
-  get "mark/add"
-  get "mark/edit"
-  get "mark/delete"
   resources :courses do
       resources :components do
-        resources :marks
+        resources :evaluations
       end
   end 
   root to: 'courses#index'

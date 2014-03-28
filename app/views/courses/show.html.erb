@@ -16,14 +16,28 @@
 	<span>
     	<ol>
 		    <% @course.components.each do |component| %>
+		    	<div class="component">
 			    	<li>
 					     <%= component.name %>  -> 
 					     <%= component.component_weight %> %
 					  	 | <%= link_to 'Edit', edit_course_component_path(component.course, component)%> |
 					  	  <%= link_to "Delete", polymorphic_url(@course), method: :delete, data:{confirm: "Are you sure you want to delete this?"} %> |
-					  	  <%= link_to "Add mark" ,new_course_component_mark_path(component.course, component, @mark)%> | 
-					  	  MARK -> <%= %>
+					  	  
+					  	  <ul>
+							<li>
+								  <%= link_to "Add Evaluation" ,new_course_component_evaluation_path(component.course, component, @evaluation)%> |
+								    <%= link_to "Delete", '#'%> |
+							</li>
+						  	<li>MARKS: 
+						  		<ul>
+							  		<% component.evaluations.each do |eval| %>
+							  			<li> <%= eval.mark %>% , </li> 
+							  		<% end %>
+						  		</ul>
+						  	</li>
+						  </ul> 
 					</li>
+				</div>
 		    <% end %>
 		<ol>
 	</span>
