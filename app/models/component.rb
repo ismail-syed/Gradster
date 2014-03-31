@@ -4,4 +4,7 @@ class Component < ActiveRecord::Base
 
 	validates :name, presence: true
 	validates :component_weight, presence: true
+
+	
+
 end

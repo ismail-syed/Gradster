@@ -18,24 +18,34 @@
 		    <% @course.components.each do |component| %>
 		    	<div class="component">
 			    	<li>
-					     <%= component.name %>: <br /> 
-					     <%= component.component_weight %> %
-					  	 | <%= link_to 'Edit', edit_course_component_path(component.course, component)%> |
-					  	  <%= link_to "Delete Component", course_component_path(component.course, component), 
-					  	  		method: :delete, data:{confirm: "Are you sure you want to delete this?"} %> |
-						  <%= link_to "Add Evaluation" ,new_course_component_evaluation_path(component.course, component, @evaluation)%> |
+					     <strong> <%= component.name %> weight: </strong> 
+					 	<%= component.component_weight %> % <br />
+
+						 <div id="control">
+						  	 | <%= link_to 'Edit', edit_course_component_path(component.course, component)%> |
+						  	  <%= link_to "Delete Component", course_component_path(component.course, component), 
+						  	  		method: :delete, data:{confirm: "Are you sure you want to delete this?"} %> |
+							  <%= link_to "Add Evaluation" ,new_course_component_evaluation_path(component.course, component, @evaluation)%> |
+						 </div> 
 					  	  
-					  	  <ul>
-						  	<li>MARKS: 
-						  		<ul>
-							  		<% component.evaluations.each do |eval| %>
-							  			<li> <%= eval.mark %>%  
-							  				<%= link_to "Remove Mark", course_component_evaluation_path(eval.component.course, eval.component, eval), method: :delete %>  </li> 
-							  		<% end %>
-						  		</ul>
-						  	</li>
-						  </ul> 
-					</li>
+					  	 
+						  	<div id="marks">
+							  	MARKS: 
+							  		<ul>
+								  		<% component.evaluations.each do |eval| %>
+								  			<li> <%= eval.mark %>%  
+								  				<%= link_to "Remove Mark", course_component_evaluation_path(eval.component.course, eval.component, eval), method: :delete %> 
+								  			</li> 
+								  		<% end %>
+							  		</ul>
+						    </div>
+
+						  <div id="component-grading">
+							  <em>Component Grade:  <%= Evaluation.where(:component_id => component.id).average(:mark) %> </em> <br />
+	  						  <em>Component Weight Grade: <%= component.component_weight.to_f/100  %> </em>
+  						 </div> 
+
+ 					</li>
 				</div>
 		    <% end %>
 		<ol>
