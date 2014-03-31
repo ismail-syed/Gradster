@@ -21,10 +21,14 @@ body{
 	font-family: "Arial Black", Gadget, sans-serif; 
 	font-size: 24px; 
 }
+.main-control{
+	border-bottom: solid 1px #888888;
+	text-align: right;
+}
 
 .add_component_button{
 	padding: 20px 0;
-	border-bottom: solid 1px #CCC;
+	border-bottom: solid 1px #C0C0C0;
 
 }
 .components{
@@ -36,13 +40,18 @@ body{
 	border-bottom: solid 1px #CCC;
 }
 #control{
-	padding: 20px 40px 20px 40px;
-}
-#component-grading{
-	padding: 50px 0px 10px 25px;
+	padding: 20px 0px 20px 40px;
 }
 #marks{
 	padding-left: 40px;
+}
+#component-grading{
+	padding-left: 750px;
+
+}
+.final-grade{
+	padding-top: 50px; 
+
 }
 
 

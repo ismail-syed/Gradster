@@ -1,25 +1,27 @@
 <p id="notice"><%= notice %></p>
 
-<span>
 <div class="title">
 	  <strong>Name:</strong>
 	  <%= @course.name %>
 </div>
 
-| <%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %> |
+<div class="main-control">
+	| <%= link_to 'Edit', edit_course_path(@course) %> |
+	<%= link_to 'Back', courses_path %> |
+</div>
 
-</span>
+<% grade_counter = 0 %>
 
 <div class="components">
-	<h4> Components </h4>
 	<span>
     	<ol>
+
+    		<!-- COMPONENTS -->
 		    <% @course.components.each do |component| %>
 		    	<div class="component">
 			    	<li>
 					     <strong> <%= component.name %> weight: </strong> 
-					 	<%= component.component_weight %> % <br />
+					 	<%= component.component_weight %>% <br />
 
 						 <div id="control">
 						  	 | <%= link_to 'Edit', edit_course_component_path(component.course, component)%> |
@@ -28,26 +30,41 @@
 							  <%= link_to "Add Evaluation" ,new_course_component_evaluation_path(component.course, component, @evaluation)%> |
 						 </div> 
 					  	  
-					  	 
+				  	 	<span>
 						  	<div id="marks">
-							  	MARKS: 
-							  		<ul>
-								  		<% component.evaluations.each do |eval| %>
-								  			<li> <%= eval.mark %>%  
-								  				<%= link_to "Remove Mark", course_component_evaluation_path(eval.component.course, eval.component, eval), method: :delete %> 
-								  			</li> 
-								  		<% end %>
-							  		</ul>
-						    </div>
+								  	<strong> Marks: </strong> 
+								  		<ul>
+									  		<% component.evaluations.each do |eval| %>
+									  			<li> <%= eval.mark %>%  
+									  				<%= link_to "Remove Mark", course_component_evaluation_path(eval.component.course, eval.component, eval), method: :delete %> 
+									  			</li> 
+									  		<% end %>
+								  		</ul>
+							    </div>
 
-						  <div id="component-grading">
-							  <em>Component Grade:  <%= Evaluation.where(:component_id => component.id).average(:mark) %> </em> <br />
-	  						  <em>Component Weight Grade: <%= component.component_weight.to_f/100  %> </em>
-  						 </div> 
+							  <div id="component-grading">
+								  <em>Component Grade:  <%= comp_grade = Evaluation.where(:component_id => component.id).average(:mark).to_f.round(2) %>
+								  </em> <br />
+		  						  <em>Component Weight Grade: 
+		  						  	<% comp_grade_weight =  ( (component.component_weight.to_f/100) * (Evaluation.where(:component_id => component.id).average(:mark).to_f.round(2)) ).round(3) %> 
+		  						  	<%= comp_grade_weight %>  </em>
+								    	<% grade_counter += comp_grade_weight %>
+
+	  						 </div> 
+  						</span>
 
  					</li>
 				</div>
 		    <% end %>
+
+    		<!-- FINAL COURSE GRADE -->
+
+    		<div class="final-grade">
+	    		<h3> Final Grade: </h3>
+	    					<%= grade_counter.to_f.round(2) %> 
+    		</div>
+
+
 		<ol>
 	</span>
 
