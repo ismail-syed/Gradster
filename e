@@ -1,0 +1,47 @@
+commit c91577dbccdcc63f66edfd2d98de273ca2697ce6
+Author: Ismail <isyed@ubuntu.(none)>
+Date:   Mon Mar 24 15:19:25 2014 -0400
+
+    fixed components issue
+
+commit e1e3f0fa43ab0011ff851a47bb3ec1c9f2158852
+Author: Ismail <isyed@ubuntu.(none)>
+Date:   Mon Mar 24 13:03:17 2014 -0400
+
+    added more styling
+
+commit 062f85d310391fc76b7c54b0e311115de226d784
+Author: Ismail <isyed@ubuntu.(none)>
+Date:   Mon Mar 24 12:22:04 2014 -0400
+
+    added styling
+
+commit ec154582523743e8cf5da049079b55a3ed1cf502
+Author: Ismail <isyed@ubuntu.(none)>
+Date:   Sun Mar 23 12:02:58 2014 -0400
+
+    update README
+
+commit c3719a12606c0ad83733ddb3d17d52535e9dd52c
+Author: Ismail <isyed@ubuntu.(none)>
+Date:   Sun Mar 23 11:55:39 2014 -0400
+
+    Changed routes, components is a  sub-resource to course
+
+commit b8e362b3e862c91adf9d39fd938aac4fdfa95161
+Author: Ismail <isyed@ubuntu.(none)>
+Date:   Sat Mar 22 23:08:36 2014 -0400
+
+    updated README.rdoc
+
+commit cff80a95a1a5ace5a427b1126fa44dc85ffe30ab
+Author: Ismail <isyed@ubuntu.(none)>
+Date:   Sat Mar 22 23:07:11 2014 -0400
+
+    updated REAMDE.rdoc
+
+commit c7cfa4056e987f2325ab6cd51ea4d1b17bed1331
+Author: Ismail <isyed@ubuntu.(none)>
+Date:   Sat Mar 22 23:00:27 2014 -0400
+
+    Initial commit
