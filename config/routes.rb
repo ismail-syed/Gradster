@@ -1,4 +1,5 @@
 Gradster::Application.routes.draw do
+  devise_for :users
   resources :courses do
       resources :components do
         resources :evaluations
