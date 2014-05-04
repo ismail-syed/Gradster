@@ -1,11 +1,14 @@
 Gradster::Application.routes.draw do
   devise_for :users
+
   resources :courses do
       resources :components do
         resources :evaluations
       end
   end 
-  root to: 'courses#index'
+
+  root to: 'homepage#index'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
