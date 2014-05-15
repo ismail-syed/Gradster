@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
   	courses_path
- 	end
+  end
 
 	before_filter :update_sanitized_params, if: :devise_controller?
 
