@@ -1,11 +1,1 @@
-Soooooooo, lol,
-I had issues with applying twitter bootstrap to grade-calc for some reason so I just redesgined grade-calc from scratch since it wasn't even that far into development. 
-
-
-
-====Updates
--Implemented Twitter bootstrap 
-
--Fixed components form issue 
-
--Added edit component link feature but cancel edit component doesn't work
+Gradster is a service that allows students to keep track of their school grades.
