@@ -1,5 +1,7 @@
 Gradster is a service that allows students to keep track of their school grades.
 
+
+
 Working features:
 
 -user registration and user registraion (devise)
