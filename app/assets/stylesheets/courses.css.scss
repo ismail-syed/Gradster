@@ -16,6 +16,14 @@ body{
 .add-course-btn{
 	text-align: right;
 }
+#add-course-message{
+	text-align: center;
+	padding: 30px 0px 50px 0px;
+}
+
+#delete-btn{
+	text-align: right;
+}
 
 
 /*//-- show.html.erb -- //*/
@@ -42,18 +50,25 @@ body{
 	border-bottom: solid 1px #CCC;
 }
 #control{
-	padding: 20px 0px 20px 40px;
+	text-align: right;
 }
 #marks{
 	padding-left: 40px;
 }
+
 #component-grading{
-	padding-left: 750px;
+	text-align: right;
 
 }
 .final-grade{
 	padding-top: 50px; 
-
+	text-align: right;
+}
+.add-comp-message{
+	text-align: center;
+}
+#add-mark-message{
+	text-align: center;
 }
 
 
