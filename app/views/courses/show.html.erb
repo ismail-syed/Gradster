@@ -1,14 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <div class="title">
-	  <strong>Course:</strong>
-	  <%= @course.name %>
+  <h1 class="page-header">
+  	<%= link_to @course.name, edit_course_path(@course) %>
+  	<div class="add_component_button">
+			<button type="button" class="btn btn-info" >
+				<%= link_to 'Add Component', new_course_component_path(@course, @component) %>
+			</button>
+		</div>
+  </h1>
+
 </div>
 
-<div class="main-control">
-	| <%= link_to 'Edit', edit_course_path(@course) %> |
-	<%= link_to 'Back', courses_path %> |
-</div>
+
 
 <% grade_counter = 0 %>
 
@@ -25,9 +29,8 @@
 						 		<%= component.component_weight %>% 
 
 							 <div id="control">
-								<%= link_to "Add Marks" ,new_course_component_evaluation_path(component.course, component, @evaluation), :class => 'btn btn-sm btn-primary'%> 
-								<%= link_to "Delete Component", course_component_path(component.course, component), 
-							  	  		method: :delete, data:{confirm: "Are you sure you want to delete this?"}, :class => 'btn btn-sm btn-danger' %>
+								<%= link_to "Add Marks" ,new_course_component_evaluation_path(component.course, component, @evaluation), :class => 'btn btn-sm btn-primary' %> 
+								
 							 </div> 
 						</span>
 					  	  
@@ -81,11 +84,4 @@
 	</span>
 
 </div>	
-
-
-
-<div class="add_component_button">
-<button type="button" class="btn btn-info">
-	<%= link_to 'Add Component', new_course_component_path(@course, @component) %>
-</button>
-</div>
+<%= link_to 'Back', courses_path %> 
