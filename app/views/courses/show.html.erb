@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <div class="title">
   <h1 class="page-header">
   	<%= link_to @course.name, edit_course_path(@course) %>
@@ -58,7 +56,7 @@
 									  </em> <br />
 			  						  <em>Component Weight Grade: 
 			  						  	<%= comp_grade_weight %>  </em>
-									    	<% grade_counter += comp_grade_weight %>
+									    	<%  @course.grade += comp_grade_weight %>
 		  						 </div>
 	  						 <% end %> 
   						</span>
@@ -76,7 +74,8 @@
 	    	<% else %>
 
 	    		<div class="final-grade">
-		    		<span> <h3> Final Grade: <%= grade_counter.to_f.round(2) %> </h3> </span>				 
+		    		<span> <h3> Final Grade: <%=  @course.grade.to_f.round(2) %></h3> </span>  
+		    		<% @course.save %> 				 
 	    		</div>
 	    	<% end %>	
 
