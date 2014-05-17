@@ -16,5 +16,9 @@
 
  .login-sign-button{
  	text-align: right;
-
  }
+
+/*//-- padding to compensate for twitter bootstrap navbar --//*/
+body{
+	padding-top: 70px;
+}
