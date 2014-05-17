@@ -9,6 +9,7 @@
  		<% user_courses = user_courses + 1 %>
 		  <div class="course"> 
 			  <h3> <%= link_to course.name , course %> </h3>  
+
 			  	<h4 style="display: inline"> Current Grade:</h4>
 			    <div id="delete-btn" > 
 			      <%= link_to "Delete", course, method: :delete,

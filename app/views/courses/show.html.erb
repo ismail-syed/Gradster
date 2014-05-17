@@ -21,29 +21,30 @@
 		    	<div class="component">
 			    	<li>
 			    		<span>
-						    <strong> <%= component.name %> weight: </strong> 
+						    <strong> <%= link_to component.name, edit_course_component_path(component.course, component)%>: </strong> 
 						 		<%= component.component_weight %>% 
 
 							 <div id="control">
-							  	 | <%= link_to 'Edit', edit_course_component_path(component.course, component)%> |
-							  	  <%= link_to "Delete Component", course_component_path(component.course, component), 
-							  	  		method: :delete, data:{confirm: "Are you sure you want to delete this?"} %> |
-								  <%= link_to "Add Marks" ,new_course_component_evaluation_path(component.course, component, @evaluation)%> |
+								<%= link_to "Add Marks" ,new_course_component_evaluation_path(component.course, component, @evaluation), :class => 'btn btn-sm btn-primary'%> 
+								<%= link_to "Delete Component", course_component_path(component.course, component), 
+							  	  		method: :delete, data:{confirm: "Are you sure you want to delete this?"}, :class => 'btn btn-sm btn-danger' %>
 							 </div> 
 						</span>
 					  	  
 				  	 	<span>
 						  	<div id="marks">
-								  	<strong> Marks: </strong> 
+
 								  		<ul>
 								  			<% if component.evaluations.all.count == 0 %>
 									  				<div id="add-mark-message"> Add some marks in! </div>
-								  			<% end %>
-									  		<% component.evaluations.each do |eval| %>
-									  			<li> <%= eval.mark %>%  
-									  				<%= link_to "Remove Mark", course_component_evaluation_path(eval.component.course, eval.component, eval), method: :delete %> 
-									  			</li>
-									  		<% end %>
+									  		<% else %>
+									  			<strong> Marks: </strong> 
+										  		<% component.evaluations.each do |eval| %>
+										  			<li> <%= eval.mark %>%  
+										  				<%= link_to "Remove Mark", course_component_evaluation_path(eval.component.course, eval.component, eval), method: :delete %> 
+										  			</li>
+										  		<% end %>
+									  		<% end %> 
 								  		</ul>
 							    </div>
 							  <div id="component-grading">
