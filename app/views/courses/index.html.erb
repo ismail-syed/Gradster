@@ -11,7 +11,11 @@
 			  <h3> <%= link_to course.name , course %> </h3>  
 
 			  	<h4 style="display: inline"> 
-			  		<strong> Current Grade: </strong>  <%= course.grade %>%
+			  		<% if course.grade == 0 %> 
+			  			<strong> You haven't added any marks </strong> 
+			  		<% else %> 
+				  		<strong> Current Grade: </strong>  <%= course.grade %>%
+				  	<% end %> 
 			  	</h4>
 			    <div id="delete-btn" > 
 			      <%= link_to "Delete", course, method: :delete,
