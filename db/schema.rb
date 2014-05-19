@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20140517055326) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.integer  "grade",      default: 0
+    t.float    "grade",      default: 0.0
   end
 
   create_table "evaluations", force: true do |t|

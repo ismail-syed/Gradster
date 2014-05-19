@@ -2,9 +2,7 @@
   <h1 class="page-header">
   	<%= link_to @course.name, edit_course_path(@course) %>
   	<div class="add_component_button">
-			<button type="button" class="btn btn-info" >
-				<%= link_to 'Add Component', new_course_component_path(@course, @component) %>
-			</button>
+			<%= link_to 'Add Component', new_course_component_path(@course, @component), :class => 'btn  btn-success'%>
 		</div>
   </h1>
 
@@ -12,7 +10,7 @@
 
 
 
-<% grade_counter = 0 %>
+<% @course.grade = 0.0 %>
 
 <div class="components">
 	<span>
@@ -57,6 +55,8 @@
 			  						  <em>Component Weight Grade: 
 			  						  	<%= comp_grade_weight %>  </em>
 									    	<%  @course.grade += comp_grade_weight %>
+
+									    	</br> <%= @course.grade %>
 		  						 </div>
 	  						 <% end %> 
   						</span>
@@ -74,7 +74,7 @@
 	    	<% else %>
 
 	    		<div class="final-grade">
-		    		<span> <h3> Final Grade: <%=  @course.grade.to_f.round(2) %></h3> </span>  
+		    		<span> <h3> Grade: <%=  @course.grade.to_f %></h3> </span>  
 		    		<% @course.save %> 				 
 	    		</div>
 	    	<% end %>	
