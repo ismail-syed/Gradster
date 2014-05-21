@@ -2,7 +2,7 @@
   <h1 class="page-header">
   	<%= link_to @course.name, edit_course_path(@course) %>
   	<div class="add_component_button">
-			<%= link_to 'Add Component', new_course_component_path(@course, @component), :class => 'btn  btn-success'%>
+			<%= link_to 'Add Component', new_course_component_path(@course, @component), :class => 'btn btn-success'%>
 		</div>
   </h1>
 
@@ -20,46 +20,47 @@
 		    <% @course.components.each do |component| %>
 		    	<div class="component">
 			    	<li>
-			    		<span>
-						    <strong> <%= link_to component.name, edit_course_component_path(component.course, component)%>: </strong> 
-						 		<%= component.component_weight %>% 
 
+		    		<span>
+						    <strong> <%= link_to component.name, edit_course_component_path(component.course, component)%>: 
+						    </strong> 
+						 	<%= component.component_weight %>% 
 							 <div id="control">
 								<%= link_to "Add Marks" ,new_course_component_evaluation_path(component.course, component, @evaluation), :class => 'btn btn-sm btn-primary' %> 
-								
 							 </div> 
 						</span>
 					  	  
-				  	 	<span>
-						  	<div id="marks">
+			  	 	<span>
+					  	<div id="marks">
+					  		<ul>
+					  			<% if component.evaluations.all.count == 0 %>
+					  				<div id="add-mark-message"> Add some marks in! </div>
+						  		<% else %>
+						  			<strong> Marks: </strong> 
+							  		<% component.evaluations.each do |eval| %>
+							  			<li> 
+							  				<%= eval.mark %>%  
+							  				<%= link_to "Remove Mark", course_component_evaluation_path(eval.component.course,
+							  				 		eval.component, eval), method: :delete %> 
+							  			</li>
+							  		<% end %>
+						  		<% end %> 
+					  		</ul>
+						    </div>
 
-								  		<ul>
-								  			<% if component.evaluations.all.count == 0 %>
-									  				<div id="add-mark-message"> Add some marks in! </div>
-									  		<% else %>
-									  			<strong> Marks: </strong> 
-										  		<% component.evaluations.each do |eval| %>
-										  			<li> <%= eval.mark %>%  
-										  				<%= link_to "Remove Mark", course_component_evaluation_path(eval.component.course, eval.component, eval), method: :delete %> 
-										  			</li>
-										  		<% end %>
-									  		<% end %> 
-								  		</ul>
-							    </div>
-							  <div id="component-grading">
-							  	<% comp_grade = Evaluation.where(:component_id => component.id).average(:mark).to_f.round(2) %>
-							  	<% comp_grade_weight =  ( (component.component_weight.to_f/100) * (Evaluation.where(:component_id => component.id).average(:mark).to_f.round(2)) ).round(3) %> 
-							  	<% unless comp_grade_weight == 0.0 %>
-									  <em>Component Grade: <%= comp_grade %>
-									  </em> <br />
-			  						  <em>Component Weight Grade: 
-			  						  	<%= comp_grade_weight %>  </em>
-									    	<%  @course.grade += comp_grade_weight %>
-
-									    	</br> <%= @course.grade %>
-		  						 </div>
-	  						 <% end %> 
-  						</span>
+						  <div id="component-grading">
+						  	<% comp_grade = Evaluation.where(:component_id => component.id).average(:mark).to_f.round(2) %>
+						  	<% comp_grade_weight =  ( (component.component_weight.to_f/100) * (Evaluation.where(:component_id => component.id).average(:mark).to_f.round(2)) ).round(3) %> 
+						  	<% unless comp_grade_weight == 0.0 %>
+								  <em>Component Grade: <%= comp_grade %></em> 
+								  <br />
+		  						<em> Component Weight Grade: <%= comp_grade_weight %>  </em>
+									<% @course.grade += comp_grade_weight %>
+						    	</br> <%= @course.grade %>
+								 <% end %> 
+  						 </div>
+		  				 
+						</span>
 
 		 					</li>
 						</div>
@@ -72,15 +73,12 @@
 	    		</div>
 
 	    	<% else %>
-
 	    		<div class="final-grade">
 		    		<span> <h3> Grade: <%=  @course.grade.to_f %></h3> </span>  
 		    		<% @course.save %> 				 
 	    		</div>
 	    	<% end %>	
-
 		<ol>
 	</span>
-
 </div>	
 <%= link_to 'Back', courses_path %> 
