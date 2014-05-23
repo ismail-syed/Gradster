@@ -12,12 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery_ui
 //= require_tree 
 //= require bootstrap
 
-$(document).ready(function(){
-	$(this).click(function() {
-			$(this).text("show");
-		});
-	alert("working");
-});

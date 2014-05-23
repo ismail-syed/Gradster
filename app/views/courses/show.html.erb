@@ -8,62 +8,80 @@
 
 </div>
 
-
-
 <% @course.grade = 0.0 %>
 
 <div class="components">
 	<span>
     	<ol>
-
     		<!-- COMPONENTS -->
 		    <% @course.components.each do |component| %>
+			    <% comp_grade = Evaluation.where(:component_id => component.id).average(:mark).to_f.round(2) %>
+			  	<% comp_grade_weight =  ( (component.component_weight.to_f/100) * (Evaluation.where(:component_id => component.id).average(:mark).to_f.round(2)) ).round(3) %> 
 		    	<div class="component">
 			    	<li>
 
-		    		<span>
-						    <strong> <%= link_to component.name, edit_course_component_path(component.course, component)%>: 
-						    </strong> 
-						 	<%= component.component_weight %>% 
-							 <div id="control">
-								<%= link_to "Add Marks" ,new_course_component_evaluation_path(component.course, component, @evaluation), :class => 'btn btn-sm btn-primary' %> 
-							 </div> 
-						</span>
-					  	  
-			  	 	<span>
-					  	<div id="marks">
-					  		<ul>
-					  			<% if component.evaluations.all.count == 0 %>
-					  				<div id="add-mark-message"> Add some marks in! </div>
-						  		<% else %>
-						  			<strong> Marks: </strong> 
-							  		<% component.evaluations.each do |eval| %>
-							  			<li> 
-							  				<%= eval.mark %>%  
-							  				<%= link_to "Remove Mark", course_component_evaluation_path(eval.component.course,
-							  				 		eval.component, eval), method: :delete %> 
-							  			</li>
-							  		<% end %>
-						  		<% end %> 
-					  		</ul>
-						    </div>
-
-						  <div id="component-grading">
-						  	<% comp_grade = Evaluation.where(:component_id => component.id).average(:mark).to_f.round(2) %>
-						  	<% comp_grade_weight =  ( (component.component_weight.to_f/100) * (Evaluation.where(:component_id => component.id).average(:mark).to_f.round(2)) ).round(3) %> 
-						  	<% unless comp_grade_weight == 0.0 %>
-								  <em>Component Grade: <%= comp_grade %></em> 
-								  <br />
-		  						<em> Component Weight Grade: <%= comp_grade_weight %>  </em>
-									<% @course.grade += comp_grade_weight %>
-						    	</br> <%= @course.grade %>
-								 <% end %> 
-  						 </div>
-		  				 
-						</span>
-
-		 					</li>
+						<div class="add-mark-btn">
+							<%= link_to "Add Marks" ,new_course_component_evaluation_path(component.course, component, @evaluation), :class => 'btn btn-sm btn-info' %> </br>
 						</div>
+
+						<div class="container">
+						    <div class="row">
+						        <div class="col-md-11">
+						            <div class="panel panel-primary">
+						                <div class="panel-heading clickable">
+						                    <h3 class="panel-title">
+						                        <strong> 
+						    											<span class="expandable-title"> 
+						    												<a href="/courses/<%=component.course.id%>/components/<%=component.id%>/edit">
+						    												 <%=component.name%>:
+						    												</a>
+						    											</span>
+																    </strong> 
+																	 	<%= component.component_weight %>% 
+																</h3>
+						                    <span class="pull-right "><i class="glyphicon glyphicon-minus"></i></span>
+						                </div>
+						                <div class="panel-body">
+						                   <div id="marks">
+														  		<ul>
+														  			<% if component.evaluations.all.count == 0 %>
+														  				<div id="add-mark-message"> Add some marks in! </div>
+															  		<% else %>
+															  			<strong> Marks: </strong> 
+																  		<% component.evaluations.each do |eval| %>
+																  			<li> 
+																  				<%= eval.mark %>%  
+																  				<%= link_to "Remove Mark", course_component_evaluation_path(eval.component.course,
+																  				 		eval.component, eval), method: :delete %> 
+																  			</li>
+																  		<% end %>
+															  		<% end %> 
+														  		</ul>
+														    </div>
+
+															<div id="component-grading">
+														  	<% unless comp_grade_weight == 0.0 %>
+																  <em>Component Grade: <%= comp_grade %></em> 
+																  <br />
+										  						<em> Component Weight Grade: <%= comp_grade_weight %>  </em>
+																	<% @course.grade += comp_grade_weight %>
+														    	</br> Total Summation: <%= @course.grade %>
+															 <% end %> 
+								  						</div>
+																					
+						                </div>
+						            </div>
+						        </div>
+						    </div>
+							</div>
+							</li>
+
+						</div>
+
+						
+
+
+
 			    <% end %>
 
     		<!-- FINAL COURSE GRADE -->
@@ -82,3 +100,5 @@
 	</span>
 </div>	
 <%= link_to 'Back', courses_path %> 
+
+</br> 
