@@ -20,6 +20,10 @@
 #delete-btn{
 	text-align: right;
 }
+#component-overview{
+	border-bottom: solid 1px #CCC; 
+}
+
 
 
 /*//-- show.html.erb -- //*/
@@ -71,7 +75,9 @@
 .right-tab-grade{
 	display: inline-block;
 }
-
+.component-grade{
+	text-align: right; 
+}
 
 /*//-- edit.html.erb -- //*/
 .buttons{

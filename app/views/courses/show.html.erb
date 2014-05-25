@@ -15,7 +15,7 @@
     	<ol>
     		<!-- COMPONENTS -->
 		    <% @course.components.each do |component| %>
-			    <% comp_grade = Evaluation.where(:component_id => component.id).average(:mark).to_f.round(2) %>
+			    <% component.grade = Evaluation.where(:component_id => component.id).average(:mark).to_f.round(2) %>
 			  	<% comp_grade_weight =  ( (component.component_weight.to_f/100) * (Evaluation.where(:component_id => component.id).average(:mark).to_f.round(2)) ).round(3) %> 
 		    	<div class="component">
 			    	<li>
@@ -33,11 +33,11 @@
 						                        <strong> 
 						    											<span class="expandable-title"> 
 						    												<a href="/courses/<%=component.course.id%>/components/<%=component.id%>/edit">
-						    												 <%=component.name%>:
+						    												 <%=component.name%>:	<%= component.component_weight %>% 
 						    												</a>
+						    												<div class="component-grade"> <%= component.grade %>% </div>
 						    											</span>
 																    </strong> 
-																	 	<%= component.component_weight %>% 
 																</h3>
 						                    <span class="pull-right "><i class="glyphicon glyphicon-minus"></i></span>
 						                </div>
@@ -61,7 +61,7 @@
 
 															<div id="component-grading">
 														  	<% unless comp_grade_weight == 0.0 %>
-																  <em>Component Grade: <%= comp_grade %></em> 
+																  <em>Component Grade: <%= component.grade %></em> 
 																  <br />
 										  						<em> Component Weight Grade: <%= comp_grade_weight %>  </em>
 																	<% @course.grade += comp_grade_weight %>
@@ -75,13 +75,8 @@
 						    </div>
 							</div>
 							</li>
-
 						</div>
-
-						
-
-
-
+						<% component.save %> 
 			    <% end %>
 
     		<!-- FINAL COURSE GRADE -->
