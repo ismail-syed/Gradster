@@ -1,6 +1,6 @@
 <div class="title">
   <h1 class="page-header">
-  	<%= link_to @course.name, edit_course_path(@course) %>
+  	<%= link_to @course.name.upcase, edit_course_path(@course) %>
   	<div class="add_component_button">
 			<%= link_to 'Add Component', new_course_component_path(@course, @component), :class => 'btn btn-success'%>
 		</div>
