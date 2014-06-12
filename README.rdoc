@@ -1,5 +1,7 @@
 Gradster is a service that allows students to keep track of their school grades.
 
+Currently live version of the site (for testing purposes only):
+gradster.herokuapp.com
 
 
 Working features:
