@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require_tree .
 //= require bootstrap
+
 $(document).on('click', '.panel-heading span.clickable', function (e) {
     var $this = $(this);
     if (!$this.hasClass('panel-collapsed')) {
