@@ -1,8 +1,10 @@
-<%= form_for [@course, @component] do |f| %>
+<% modal ||= false %>
+<% remote = modal ? true : false %>
+<%= form_for([@course, @component], :remote => true, html: {role: :form, 'data-model' => 'component'}) do |f| %>
+  
   <% if @component.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@component.errors.count, "error") %> prohibited this component from being saved:</h2>
-
       <ul>
       <% @component.errors.full_messages.each do |msg| %>f
         <li><%= msg %></li>
@@ -11,11 +13,14 @@
     </div>
   <% end %>
 
-  <div class="field text-center">
+  <div class="field text-center form-group">
     <%= f.text_field :name, :class => "form-control input-lg", :placeholder => "Component Name", :tabindex => "1" %>
-  </div> </br>
-  <div class="field text-center">
+    <span class="help-block"></span>
+  </div>  </br>
+
+  <div class="field text-center form-group">
     <%= f.number_field :component_weight, :class => "form-control input-lg", :placeholder => "Component Weight", :tabindex => "1" %>
+    <span class="help-block"></span>
   </div>
 
   <div class="actions col-md-4 text-center">
@@ -23,6 +28,8 @@
 
   <div class="modal-footer">
     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-    <%= f.submit :value => "Create Component", :class => "btn btn-primary", :tabindex => "7" %>
+    <%= f.submit :value => "Create Component", :id => 'submit-component', :class => "btn btn-primary", :tabindex => "7" %>
   </div>
+
+
 <% end %>
