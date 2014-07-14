@@ -1,0 +1,8 @@
+//  A view to render the newly created Component object as a table row via Javascript
+alert('javascript working in courses/show.js.erb')
+$('#components_table').append("<%= j render partial: 'component_display', locals: {component: @component } %>");
+$('#AddComponentModal').modal_success();
+
+$(document).on("click", "#submit-component", function() {
+	alert('hello from courses/show.js.erb');
+});
