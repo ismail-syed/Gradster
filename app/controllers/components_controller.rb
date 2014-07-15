@@ -36,7 +36,7 @@ class ComponentsController < ApplicationController
       if @component.save
         format.html { redirect_to @course, notice: 'Component was successfully created.' }
         format.json { render action: 'show', status: :created, location: @component }
-        format.js  {render action: 'show', status: :created, location: @component }
+        format.js  # create.js.erb
       else
         format.html { render action: 'new' }
         format.json { render json: @component.errors, status: :unprocessable_entity }

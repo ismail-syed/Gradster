@@ -10,14 +10,9 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
-
     # @component = Component.find(params[:id])
-    @component = Component.new
-
-    # render :text => "hello"
-      
+    @component = Component.new      
   end
-
 
 
   # GET /courses/new
