@@ -1,8 +1,10 @@
-<%= form_for(@course) do |f| %>
+<% modal ||= false %>
+<% remote = modal ? true : false %>
+<%= form_for((@course) , :remote => true, html: {role: :form, 'data-model' => 'course'}) do |f| %>
+  
   <% if @course.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
-
       <ul>
       <% @course.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -11,14 +13,13 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
+  <div class="field text-center form-group">
+    <%= f.text_field :name, :class => "form-control input-lg", :placeholder => "Course Name", :tabindex => "1" %>
+  </div> </br>
 
-
-  <div class="form-actions btn ">
-    <%= f.submit %>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+    <%= f.submit :value => "Create Course", :id => 'submit-component', :class => "btn btn-primary", :tabindex => "7" %>
   </div>
 
 <% end %>

@@ -40,7 +40,7 @@ class ComponentsController < ApplicationController
       else
         format.html { render action: 'new' }
         format.json { render json: @component.errors, status: :unprocessable_entity }
-        format.js   {render json: @component.errors, status: :unprocessable_entity }
+        format.js {render json: @component.errors, status: :unprocessable_entity }
       end
     end
   end

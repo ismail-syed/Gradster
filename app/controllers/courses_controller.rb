@@ -5,6 +5,7 @@ class CoursesController < ApplicationController
   # GET /courses.json
   def index
     @courses = Course.all
+    @course = Course.new
   end
 
   # GET /courses/1
@@ -34,9 +35,11 @@ class CoursesController < ApplicationController
       if @course.save
         format.html { redirect_to @course, notice: 'Course was successfully created.' }
         format.json { render action: 'show', status: :created, location: @course }
+        format.js # create.js.erb
       else
         format.html { render action: 'new' }
         format.json { render json: @course.errors, status: :unprocessable_entity }
+        format.js {render json: @course.errors, status: :unprocessable_entity}
       end
     end
   end
