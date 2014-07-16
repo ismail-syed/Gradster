@@ -22,10 +22,10 @@
 								<% comp_grade_weight =  ( (component.component_weight.to_f/100) * (Evaluation.where(:component_id => component.id).average(:mark).to_f.round(2)) ).round(3) %> 
 
 								<div class="component">
-							  	<li>
+							  	<li id="component-list-item">
 
 									<div class="add-mark-btn">
-										<%= link_to "Add Marks" ,new_course_component_evaluation_path(component.course, component, @evaluation), :class => 'btn btn-sm btn-info' %>
+										<%= link_to "Add Marks" ,new_course_component_evaluation_path(component.course, component, @evaluation), id: "add-mark", :class => 'btn btn-sm btn-info', :remote => true %>
 										</br>
 									</div>
 
