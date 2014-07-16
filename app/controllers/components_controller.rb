@@ -23,7 +23,6 @@ class ComponentsController < ApplicationController
   # GET /components/1/edit
   def edit
     @course = Course.find(params[:course_id])
-
   end
 
   # POST /components
@@ -54,6 +53,7 @@ class ComponentsController < ApplicationController
       if @component.update(component_params)
         format.html { redirect_to @course, notice: 'Component was successfully updated.' }
         format.json { head :no_content }
+        format.js 
       else
         format.html { render action: 'edit' }
         format.json { render json: @component.errors, status: :unprocessable_entity }
