@@ -1,6 +1,7 @@
 Gradster::Application.routes.draw do
   devise_for :users
   get 'static_pages/learn_more' => 'static_pages#learn_more'
+  
   resources :courses do
       resources :components do
         resources :evaluations

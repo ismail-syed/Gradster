@@ -78,7 +78,9 @@
 																	    	</br> Total Summation: <%= @course.grade %>
 																		 <% end %> 
 											  						</div>
-																								
+
+																		<%= render :partial => 'evaluations/form', locals: {:course => @course, :component => @component} %>
+
 									                </div>
 									            </div>
 									        </div>

@@ -11,8 +11,9 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
-    # @component = Component.find(params[:id])
-    @component = Component.new      
+    @course = Course.find(params[:id])
+    @component = Component.new   
+    @evaluation = Evaluation.new   
   end
 
 
