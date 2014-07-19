@@ -1,4 +1,6 @@
-<%= form_for [@course, @evaluation.component, @evaluation ] do |f| %>
+<% modal ||= false %>
+<% remote = modal ? true : false %>
+<%= form_for [@course, @evaluation.component, @evaluation ] , url: @course do |f| %>
   <% if @evaluation.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@evaluation.errors.count, "error") %> prohibited this evaluation from being saved:</h2>
@@ -14,7 +16,7 @@
   
   <div class="field form-inline">
     <%= f.number_field :mark , :class => "form-control input-sm ", :placeholder => "Add Mark"%>
-    <%= f.submit "Add Mark", :class => "btn btn-primary btn-xs"%>
+    <%= f.submit "Add Mark", :class => "btn btn-primary btn-xs", :id => "add-mark-btn"%>
   </div>
 
   <div class="actions">

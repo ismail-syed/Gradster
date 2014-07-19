@@ -6,6 +6,8 @@ class CoursesController < ApplicationController
   def index
     @courses = Course.all
     @course = Course.new
+    
+    @evaluation = Evaluation.new
   end
 
   # GET /courses/1
@@ -13,7 +15,14 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
     @component = Component.new   
-    @evaluation = Evaluation.new   
+    @evaluation = Evaluation.new
+
+   # respond_to do |format|
+   #      format.html { render action: 'show' }
+   #      format.json { render action: 'show', status: :created, location: @course }
+   #      format.js {}  # create.js.erb in views/evaluations
+   #   end
+
   end
 
 

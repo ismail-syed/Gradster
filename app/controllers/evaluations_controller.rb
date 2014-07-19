@@ -15,7 +15,8 @@ class EvaluationsController < ApplicationController
     respond_to do |format|
       if @evaluation.save
         format.html { redirect_to @course, notice: 'evaluation was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @evaluation }
+        format.json { render action: 'courses/show', status: :created, location: @course }
+        format.js {}  # create.js.erb in views/evaluations
       else
         format.html { render action: 'new' }
         format.json { render json: @evaluation.errors, status: :unprocessable_entity }

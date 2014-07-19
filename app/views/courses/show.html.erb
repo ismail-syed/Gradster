@@ -24,10 +24,7 @@
 								<div class="component">
 							  	<li id="component-list-item">
 
-									<div class="add-mark-btn">
-										<%= link_to "Add Marks" ,new_course_component_evaluation_path(component.course, component, @evaluation), id: "add-mark", :class => 'btn btn-sm btn-info', :remote => true %>
-										</br>
-									</div>
+								
 
 									<div class="container">
 									    <div class="row">
@@ -79,7 +76,7 @@
 																		 <% end %> 
 											  						</div>
 
-																		<%= render :partial => 'evaluations/form', locals: {:course => @course, :component => @component} %>
+																		<%= render :partial => 'evaluations/form', locals: {course: component.course, component: component, evaluation: @evaluation }%>
 
 									                </div>
 									            </div>
