@@ -9,19 +9,21 @@ class EvaluationsController < ApplicationController
 
   def create
   	@course = Course.find(params[:course_id])
-    @evaluation = Evaluation.new(component_params)
+    @evaluation = Evaluation.new(component_pstarams)
     @evaluation.component = Component.find(params[:component_id]) 
 
     respond_to do |format|
       if @evaluation.save
-        format.html { redirect_to @course, notice: 'evaluation was successfully created.' }
-        format.json { render action: 'courses/show', status: :created, location: @course }
+        format.html { redirect_to @course, notice: 'Evaluation was successfully created.' }
+        format.json { render action: 'courses/show', status: :created, location: @evaluation }
         format.js {}  # create.js.erb in views/evaluations
       else
         format.html { render action: 'new' }
         format.json { render json: @evaluation.errors, status: :unprocessable_entity }
+        format.js {render json: @evaluation.errors, status: :unprocessable_entity }
       end
     end
+    
   end
 
   def edit

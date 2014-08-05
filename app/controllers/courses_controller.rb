@@ -16,13 +16,6 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     @component = Component.new   
     @evaluation = Evaluation.new
-
-   # respond_to do |format|
-   #      format.html { render action: 'show' }
-   #      format.json { render action: 'show', status: :created, location: @course }
-   #      format.js {}  # create.js.erb in views/evaluations
-   #   end
-
   end
 
 

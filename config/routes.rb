@@ -8,7 +8,7 @@ Gradster::Application.routes.draw do
         resources :evaluations
       end
   end 
-
+    
 
   root to: 'static_pages#homepage'
 
