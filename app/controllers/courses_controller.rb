@@ -6,8 +6,6 @@ class CoursesController < ApplicationController
   def index
     @courses = Course.all
     @course = Course.new
-    
-    @evaluation = Evaluation.new
   end
 
   # GET /courses/1

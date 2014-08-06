@@ -36,9 +36,6 @@
 									                        <strong> 
 									    											<span class="expandable-title"> 
 																						
-																					<!-- 	<a href="/courses/<%=component.course.id%>/components/<%=component.id%>/edit">
-									    												 <%=component.name%>:	<%= component.component_weight %>%  
-								    												</a> -->
 								    												<%= link_to component.name, edit_course_component_path(@course, component), :remote => false %> :	<%= component.component_weight %>% 
 
 									    												<div class="component-grade"> <%= component.grade %>% </div>

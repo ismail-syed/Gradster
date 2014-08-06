@@ -5,7 +5,7 @@ Gradster::Application.routes.draw do
   # ROUTES WITH EVALUATIONS 
   resources :courses do
       resources :components do
-        resources :evaluations
+          resources :evaluations
       end
   end 
     
@@ -19,7 +19,7 @@ Gradster::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
-  # Example of regular route:
+  # Example of regular route:c
   #   get 'products/:id' => 'catalog#view'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
