@@ -12,14 +12,17 @@ class CoursesController < ApplicationController
   # GET /courses/1.json
   def show
     @course = Course.find(params[:id])
-    @component = Component.new   
-    @evaluation = Evaluation.new
+    # @component = Component.new   
+    # @evaluation = Evaluation.new
   end
 
 
   # GET /courses/new
   def new
     @course = Course.new
+    @components = @course.components
+    @component = Component.new
+    3.times {@course.components.build}
   end
 
   # GET /courses/1/edit

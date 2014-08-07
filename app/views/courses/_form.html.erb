@@ -1,6 +1,4 @@
-<% modal ||= false %>
-<% remote = modal ? true : false %>
-<%= form_for((@course) , :remote => true, html: {role: :form, 'data-model' => 'course'}) do |f| %>
+<%= form_for @course, html: {role: :form} do |f| %>
   
   <% if @course.errors.any? %>
     <div id="error_explanation">
@@ -13,13 +11,31 @@
     </div>
   <% end %>
 
+<!-- COURSE NAME -->
   <div class="field text-center form-group">
     <%= f.text_field :name, :class => "form-control input-lg", :placeholder => "Course Name", :tabindex => "1" %>
   </div> </br>
 
+
+
+<!-- COMPONENTS -->
+ <%= f.fields_for :components do |fcomp| %>
+  <%= fcomp.label :name, "Component Name" %>
+  <%= fcomp.text_field :name %> <br />
+  <%= fcomp.label :component_weight, "Component Weight" %>
+  <%= fcomp.number_field :component_weight%><br />
+ <% end %>
+
+
+
+<!-- EVALUATIONS -->
+
+
+
+<!-- FOOTER -->
   <div class="modal-footer">
-    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-    <%= f.submit :value => "Create Course", :id => 'submit-component', :class => "btn btn-primary", :tabindex => "7" %>
+    <button type="button" class="btn btn-danger">Close</button>
+    <%= f.submit :value => "Create Course", :class => "btn btn-primary", :tabindex => "7" %>
   </div>
 
 <% end %>
