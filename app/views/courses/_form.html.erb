@@ -19,11 +19,11 @@
 
 
 <!-- COMPONENTS -->
- <%= f.fields_for :components do |fcomp| %>
+ <%= f.fields_for :components, @component do |fcomp| %>
   <%= fcomp.label :name, "Component Name" %>
   <%= fcomp.text_field :name %> <br />
   <%= fcomp.label :component_weight, "Component Weight" %>
-  <%= fcomp.number_field :component_weight%><br />
+  <%= fcomp.number_field :component_weight %> <br />
  <% end %>
 
 

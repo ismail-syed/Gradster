@@ -20,13 +20,13 @@ class CoursesController < ApplicationController
   # GET /courses/new
   def new
     @course = Course.new
-    @components = @course.components
-    @component = Component.new
-    3.times {@course.components.build}
   end
 
   # GET /courses/1/edit
   def edit
+    @course = Course.find(params[:id])
+    @component = Component.new
+    @components = @course.components
   end
 
   # POST /courses
@@ -51,6 +51,7 @@ class CoursesController < ApplicationController
   # PATCH/PUT /courses/1
   # PATCH/PUT /courses/1.json
   def update
+    @course = Course.find(params[:id])
     respond_to do |format|
       if @course.update(course_params)
         format.html { redirect_to @course, notice: 'Course was successfully updated.' }
@@ -80,6 +81,6 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:name, :user_id)
+      params.require(:course).permit(:name, :user_id, components_attributes:[:name, :component_weight])
     end
 end
