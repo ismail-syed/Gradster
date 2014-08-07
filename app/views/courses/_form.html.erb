@@ -19,12 +19,11 @@
 
 
 <!-- COMPONENTS -->
- <%= f.fields_for :components, @component do |fcomp| %>
-  <%= fcomp.label :name, "Component Name" %>
-  <%= fcomp.text_field :name %> <br />
-  <%= fcomp.label :component_weight, "Component Weight" %>
-  <%= fcomp.number_field :component_weight %> <br />
+ <%= f.fields_for :components, @component do |builder| %>
+  <%= render 'component_fields', f: builder %> 
  <% end %>
+ <br /> 
+<p> <%= link_to_add_fields "Add Component", f, :components %> </p>
 
 
 
