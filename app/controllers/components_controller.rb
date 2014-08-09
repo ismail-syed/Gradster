@@ -6,7 +6,6 @@ class ComponentsController < ApplicationController
   def index
     @course = Course.find(params[:course_id])
     @components = @course.components.all
-
   end
 
   # GET /components/1
@@ -17,7 +16,7 @@ class ComponentsController < ApplicationController
   # GET /components/new
   def new
     @course = Course.find(params[:course_id])
-    @component = Component.new
+    # @component = Component.new
   end
 
   # GET /components/1/edit

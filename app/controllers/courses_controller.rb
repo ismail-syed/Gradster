@@ -25,7 +25,7 @@ class CoursesController < ApplicationController
   # GET /courses/1/edit
   def edit
     @course = Course.find(params[:id])
-    # @components = @course.components
+    @components = @course.components
   end
 
   # POST /courses
@@ -52,7 +52,7 @@ class CoursesController < ApplicationController
   def update
     @course = Course.find(params[:id])
     respond_to do |format|
-      if @course.update(course_params)
+      if @course.update_attributes(course_params)
         format.html { redirect_to @course, notice: 'Course was successfully updated.' }
         format.json { head :no_content }
       else
@@ -80,6 +80,6 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:name, :user_id, components_attributes:[:name, :component_weight])
+      params.require(:course).permit(:name, :user_id, components_attributes:[:id, :name, :component_weight])
     end
 end
