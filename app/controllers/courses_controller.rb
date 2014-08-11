@@ -60,6 +60,7 @@ class CoursesController < ApplicationController
         format.json { render json: @course.errors, status: :unprocessable_entity }
       end
     end
+    @course.save
   end
 
   # DELETE /courses/1
@@ -80,6 +81,6 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:name, :user_id, components_attributes:[:id, :name, :component_weight])
+      params.require(:course).permit(:name, :user_id, components_attributes:[:id, :name, :component_weight, :_destroy])
     end
 end
