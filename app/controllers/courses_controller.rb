@@ -26,6 +26,9 @@ class CoursesController < ApplicationController
   def edit
     @course = Course.find(params[:id])
     @components = @course.components
+    @evaluation = Evaluation.new
+
+    # @evaluations = @components.evaluation  
   end
 
   # POST /courses

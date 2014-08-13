@@ -53,8 +53,6 @@
 																			  		<% component.evaluations.each do |eval| %>
 																			  			<li> 
 																			  				<%= eval.mark %>%  
-																			  				<%= link_to "Remove Mark", course_component_evaluation_path(eval.component.course,
-																			  				 		eval.component, eval), method: :delete %> 
 																			  			</li>
 																			  		<% end %>
 																		  		<% end %> 
