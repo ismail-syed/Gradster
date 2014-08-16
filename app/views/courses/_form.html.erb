@@ -27,11 +27,12 @@
    <%= f.fields_for :components, @components do |builder| %>
     <%= render 'component_fields', f: builder %> 
    <% end %> <br /> 
-  <p> <%= link_to_add_fields "Add Component", f, :components %> </p>
+       <p> <%= link_to_add_fields "Add Component", f, :components %> </p>
+
 </div>
 
 <!-- FOOTER -->
-  <div class="modal-footer">
+  <div class="pull-right" id="edit-comp-footer">
     <%= link_to "Close", course_path(@course), :class => "btn btn-danger" %> 
     <%= f.submit :value => "Update Course", :class => "btn btn-primary", :tabindex => "7" %>
   </div>
