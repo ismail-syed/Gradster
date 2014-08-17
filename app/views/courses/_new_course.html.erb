@@ -1,0 +1,10 @@
+<%= form_for @course, html: {role: :form} do |f| %>
+  <div class="field text-center form-group go-right">
+    <%= f.text_field :name, :class => "form-control input-lg", :placeholder => "Course Name", :tabindex => "1" %>
+  </div> </br>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+    <%= f.submit :value => "Create Course", :id => 'submit-component', :class => "btn btn-primary", :tabindex => "7" %>
+  </div>
+<%end%> 
