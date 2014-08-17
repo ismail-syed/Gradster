@@ -27,7 +27,7 @@
    <%= f.fields_for :components, @components do |builder| %>
     <%= render 'component_fields', f: builder %> 
    <% end %> <br /> 
-       <p> <%= link_to_add_fields "Add Component", f, :components %> </p>
+       <p> <h4> <%= link_to_add_fields "Add Component", f, :components %> </h4></p>
 
 </div>
 
