@@ -18,28 +18,23 @@
 					  <%= f.hidden_field :_destroy %> 
 	        </div>
 	      </div>
-	      	<div class="checkbox">
-      		</div>
       </div>
 
 	    <div id="comp-title"> 
 		    <h4 class= "col-md-1 col-xs-6 col-sm-4 col-md-offset-6">Marks:</h4>
-		  </div>	        	
 
-	    <div class="">
+				<div id="add-mark-btn">
+					<%= link_to_add_fields "Add Mark", f, :evaluations %>
+	    	</div>
+
+		  </div>	 
+
 				<%= f.fields_for :evaluations, f.object.evaluations do |eval| %>
 					<%= render 'evaluation_fields', f: eval %> 
 				<% end %> 
 									
-				<div style="display: inline-block;">
-					<%= link_to_add_fields "Add Mark", f, :evaluations %>
-				</div>	
-
-			</div>	
+			</br>				
 			
-			</br>
-			</br>
-			</br>
 			<div class="pull-right">
 				<%= link_to "Delete Component", '#', class: "remove_fields", :value => f.object.id%> 
 			</div>
@@ -47,3 +42,4 @@
 		
 	</fieldset>
 </div>
+
