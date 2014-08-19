@@ -10,7 +10,7 @@ end
 
 group :production do
 	gem 'pg'
-	# gem 'rails_12factor'  # Enable Javascript in heroku production
+	gem 'rails_12factor'  # Enable Javascript in heroku production
 end 
 
 
