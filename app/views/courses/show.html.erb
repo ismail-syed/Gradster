@@ -91,7 +91,7 @@
 	    		</div>
 	    	<% else %>
 	    		<div class="final-grade">
-		    		<span> <h3> Grade: <%=  @course.grade.to_f %></h3> </span>  
+		    		<span> <h3> Grade: <%=  @course.grade.to_f.round(2) %></h3> </span>  
 		    		<% @course.save %> 				 
 	    		</div>
 	    	<% end %>

@@ -31,7 +31,7 @@
 					                    	<% if course.grade == 0 %> 
 													  			<strong> You haven't added any marks </strong> 
 													  		<% else %> 
-														  		<strong> Grade: </strong>  <%= course.grade %>%
+														  		<strong> Grade: </strong>  <%= course.grade.round(2) %>%
 														  	<% end %> 
   						                	
 					                    </h3>
