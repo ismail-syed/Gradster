@@ -67,7 +67,7 @@ class ComponentsController < ApplicationController
 
     @component.destroy
     respond_to do |format|
-      format.html { redirect_to @course }
+      format.html { redirect_to edit_course_path(@course) }
       format.json { head :no_content }
     end
   end

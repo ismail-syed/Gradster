@@ -1,6 +1,5 @@
 class Evaluation < ActiveRecord::Base
 	belongs_to :component
-
 	validates :mark, presence: true
 
 	def average_evaluation_mark

@@ -28,13 +28,13 @@
 					            <div class="panel panel-primary">
 					                <div class="panel-heading clickable">
 					                    <h3 class="panel-title">
+					                    	<% course.grade = 0 if course.components.count == 0 %>
 					                    	<% if course.grade == 0 %> 
 													  			<strong> You haven't added any marks </strong> 
 													  		<% else %> 
-														  		<strong> Grade: </strong>  <%= course.grade.round(2) %>%
+														  		<strong> Grade: </strong> <%= course.grade.round(2)%> %
 														  	<% end %> 
-  						                	
-					                    </h3>
+														  </h3>
 
 					                    <span class="pull-right">
 					                    	<i class="glyphicon glyphicon-minus"></i>
