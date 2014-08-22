@@ -26,12 +26,12 @@
 			</span> 
 
 			<div id="add-mark-btn">
-				<%= link_to_add_fields "Add Mark", f, :evaluations %> </br>
+				<%= link_to_add_fields "Add Mark", f, :evaluations%> </br>
     	</div></br>
 
 			<div class="pull-right">
-				<%= link_to "Delete Component", [@course, f.object], 
-							  	  		method: :delete, :class => 'btn btn-xs btn-danger' %> 
+				<%= link_to " Remove Component", [@course, f.object], 
+							  	  		method: :delete, :class => 'fa fa-trash-o btn btn-sm btn-danger' %> 
 			</div>
 
 			</br>	

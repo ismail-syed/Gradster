@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require_tree .
+ *= require font-awesome
  */
 
 
@@ -20,5 +21,6 @@
 
 /*//-- padding to compensate for twitter bootstrap navbar --//*/
 body{
-	padding-top: 70px;
+	padding-top: 100px;
+	height: 200px;
 }
