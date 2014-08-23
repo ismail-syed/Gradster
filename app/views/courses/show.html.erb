@@ -1,3 +1,4 @@
+
 <div class="title">
   <h1 class="page-header">
   	<%= link_to @course.name.upcase, edit_course_path(@course) %>
@@ -8,119 +9,89 @@
 <% @course.grade = 0.0 %>
 <% component_counter = 0.0 %>
 
-<div class="components">
-	<span>
-    	<ol>
-    		<!-- COMPONENTS -->
-    		<div class="well">
-    			<div class="container">
-		    		<table class='table' id="components_table"> 
-		    			<tbody>
-		    				<% @course.components.each do |component| %>
-								  <tr>
-										<% comp_grade_weight =  ( (component.component_weight.to_f/100) * (Evaluation.where(:component_id => component.id).average(:mark).to_f.round(2)) ).round(3) %> 
+<!-- COMPONENTS -->
+<div class="well">
+	<% @course.components.each do |component| %>
+	  <tr>
+			<% comp_grade_weight =  ( (component.component_weight.to_f/100) * (Evaluation.where(:component_id => component.id).average(:mark).to_f.round(2)) ).round(3) %> 
 
-										<div class="component">
-									  	<li id="component-list-item">
+			<div class="component">
+		  	
+				<div class="container">
+				    <div class="row">
+				        <div class="col-md-11">
+				            <div class="panel panel-success">
+				                
+				                <div class="panel-heading clickable">
+				                    <h3 class="panel-title">
+				                        <strong> 
+				    											<span class="expandable-title"> 
+		    													<%= component.name%> : 
+		    													<% unless component.evaluations.count == 0 %>
+				    												<%= component.evaluations.average(:mark)%>% 
+				    											<% end %> 
+				    											</span>
+														    </strong> 
+														</h3>
+				                    <span class="pull-right ">
+					                    	<%= component.component_weight  %>% 
+				                    	<i class="glyphicon glyphicon-minus"></i>
+				                    </span>
+				                </div>
 
-											<div class="container">
-											    <div class="row">
-											        <div class="col-md-11">
-											            <div class="panel panel-success">
-											                
-											                <div class="panel-heading clickable">
-											                    <h3 class="panel-title">
-											                        <strong> 
-											    											<span class="expandable-title"> 
-										    												<%= link_to component.name, edit_course_component_path(@course, component), :remote => false %> :	<%= component.component_weight %>% 
-											    											</span>
-																					    </strong> 
-																					</h3>
-											                    <span class="pull-right ">
-											                    	<% unless component.evaluations.count == 0 %>
-												                    	<%= component.evaluations.average(:mark) %>% 
-											                    	<% end %> 
-											                    	<i class="glyphicon glyphicon-minus"></i>
-											                    </span>
-											                </div>
+				                <div class="panel-body">
+				                   <div id="marks">
+												  		<ul>
+												  			<% if component.evaluations.all.count == 0 %>
+												  				<div id="add-mark-message"> No marks have been added yet. </div>
+													  		<% else %>
+													  			<strong> Marks: </strong> 
+														  		<% component.evaluations.each do |eval| %>
+														  			<li> 
+														  				<%= eval.mark %>%  
+														  			</li>
+														  		<% end %>
+													  		<% end %> 
+												  		</ul>
+												    </div>
 
-											                <div class="panel-body">
-											                   <div id="marks">
-																			  		<ul>
-																			  			<% if component.evaluations.all.count == 0 %>
-																			  				<div id="add-mark-message"> No marks have been added yet. </div>
-																				  		<% else %>
-																				  			<strong> Marks: </strong> 
-																					  		<% component.evaluations.each do |eval| %>
-																					  			<li> 
-																					  				<%= eval.mark %>%  
-																					  			</li>
-																					  		<% end %>
-																				  		<% end %> 
-																			  		</ul>
-																			    </div>
+											    <!-- COURSE GRADE CALCULATIONS -->
+													<div id="component-grading">
+												  	<% unless comp_grade_weight == 0.0 %>
+														  <% if component.evaluations.count == 0 %> 
+														  	<% @course.grade += component.component_weight %> 
+														  <% else %> 
+														  <% component_counter += component.component_weight %> 
+												    	<% @course.grade += ( (component.component_weight.to_f/100) * component.evaluations.average(:mark)) %> 
+												    	<% end %> 
+													 <% end %> 
+						  						</div>
 
-																		    <!-- COURSE GRADE CALCULATIONS -->
-																				<div id="component-grading">
-																			  	<% unless comp_grade_weight == 0.0 %>
-																					  <% if component.evaluations.count == 0 %> 
-																					  	<% @course.grade += component.component_weight %> 
-																					  <% else %> 
-																					  <% component_counter += component.component_weight %> 
-																			    	<% @course.grade += ( (component.component_weight.to_f/100) * component.evaluations.average(:mark)) %> 
-																			    	<% end %> 
-																				 <% end %> 
-													  						</div>
-
-											                </div>
-											            </div>
-											        </div>
-											    </div>
-												</div>
-												</li>
-											</div>
-										</tr>
-						    	<% component.save %> 
-							  <% end %>
-					    </tbody>
-					  </table>
+				                </div>
+				            </div>
+				        </div>
+				    </div>
 					</div>
 				</div>
+			</tr>
+		<% component.save %> 
+	<% end %>
+	<!-- FINAL COURSE GRADE -->
+<% if (@course.components.all.count == 0)  %> <!-- No components created -->
+	<div class="add-comp-message"X> 
+		<span> <h3> Edit your course to get started! </h3> </span>				 
+	</div>
+<% else %>
+	<div class="final-grade">
+		<% unless component_counter == 0 %> 
+			<% @course.grade =  (100 *(@course.grade.to_f / component_counter.to_f)).round(2) %>
+		<h2> Grade: <%=  @course.grade.to_f.round(2) %>	</h2>   
+		<% end %> 
+		<% @course.save %> 				 
+	</div>
+<% end %>
+</div>
 
-    		<!-- FINAL COURSE GRADE -->
-    		<% if (@course.components.all.count == 0)  %> <!-- No components created -->
-	    		<div class="add-comp-message"X> 
-	    			<span> <h3> Add a component to get started! </h3> </span>				 
-	    		</div>
-	    	<% else %>
-	    		<div class="final-grade">
-	    			<% @course.grade =  (100 *(@course.grade.to_f / component_counter.to_f)).round(2) %> 
-		    		<span> <h3> Grade: <%=  @course.grade.to_f.round(2) %></h3> </span>  
-		    		<% @course.save %> 				 
-	    		</div>
-	    	<% end %>
-
-	</span>
 
 <%= link_to 'Back', courses_path, :class => "btn btn-info" %> 
 </br> 
-</div>	
-
-<!-- CREATE COMPONENT MODAL -->
-<div class="modal fade" id="AddComponentModal" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h2 class="modal-title" id="myModalLabel">Add Component</h2>
-      </div>
-
-      <div class="modal-body">
-				<%= render :partial => 'components/form',  modal: true %>
-      </div>
-
-    
-    </div>
-  </div>
-</div>
