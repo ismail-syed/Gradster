@@ -26,7 +26,7 @@
 				                    <h3 class="panel-title">
 				                        <strong> 
 				    											<span class="expandable-title"> 
-		    													<%= component.name%> : 
+		    													<%= component.name.capitalize %> : 
 		    													<% unless component.evaluations.count == 0 %>
 				    												<%= component.evaluations.average(:mark)%>% 
 				    											<% end %> 
