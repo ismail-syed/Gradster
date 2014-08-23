@@ -16,20 +16,18 @@
     <%= f.text_field :name, :class => "form-control input-lg", :placeholder => "Course Name", :tabindex => "1" %>
   </div> </br>
 
+  <div class="well"> 
+    <div id="comp-title"> 
+      <h3>Components:</h3>
+    </div>
 
-<div class="container"> 
-  
-  <div id="comp-title"> 
-    <h3>Components:</h3>
+    <!-- COMPONENTS -->
+     <%= f.fields_for :components, @components do |builder| %>
+      <%= render 'component_fields', f: builder %> 
+     <% end %> <br /> 
+     <h4> <%= link_to_add_fields "Add Component", f, :components %> </h4>
+
   </div>
-
-  <!-- COMPONENTS -->
-   <%= f.fields_for :components, @components do |builder| %>
-    <%= render 'component_fields', f: builder %> 
-   <% end %> <br /> 
-   <h4> <%= link_to_add_fields "Add Component", f, :components %> </h4>
-
-</div>
 
 <!-- FOOTER -->
   <div class="pull-right" id="edit-comp-footer">

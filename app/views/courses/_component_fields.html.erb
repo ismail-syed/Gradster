@@ -1,33 +1,38 @@
-<div class="container">
+
 	<fieldset>
 
 	 	<div id="comp-block">
 	    <div class="row">
+
 	      <div class=" col-md-4 ">
 	        <div class="form-group">
 				    <%= f.label :name , "Component Name:", :class => "label label-default" %>	        	
 				    <%= f.text_field :name , :class => "form-control input-sm", :placeholder => "Component Name" %>
 	        </div>
 	      </div>
+
 	      <div class="col-md-2">
 	        <div class="form-group">
 				    <%= f.label :name , "Component Weight:", :class => "label label-default" %>	        	
-				  <%= f.number_field :component_weight, :class => "form-control  input-sm", :placeholder => "Component Weight" %> 
-				  <%= f.hidden_field :_destroy %> 
+					  <%= f.number_field :component_weight, :class => "form-control  input-sm", :placeholder => "Component Weight" %> 
+					  <%= f.hidden_field :_destroy %> 
 	        </div>
 	      </div>
+
+	      <div class=""></br>
+			    <h4 class= "col-md-offset-7">Marks:</h4>
+					<%= f.fields_for :evaluations, f.object.evaluations do |eval| %>
+						<%= render 'evaluation_fields', f: eval %> 
+					<% end %>
+
+					<div id="add-mark-btn">
+						<%= link_to_add_fields "Add Mark", f, :evaluations%> 
+		    	</div></br>
+		    </div>
+
+
 	    </div>
 	   
-	    <span>
-	    <h4 class= "col-md-offset-6">Marks:</h4>
-			<%= f.fields_for :evaluations, f.object.evaluations do |eval| %>
-				<%= render 'evaluation_fields', f: eval %> 
-			<% end %>
-			</span> 
-
-			<div id="add-mark-btn">
-				<%= link_to_add_fields "Add Mark", f, :evaluations%> </br>
-    	</div></br>
 
 			<div class="pull-right">
 				<%= link_to " Remove Component", [@course, f.object], 
@@ -38,5 +43,4 @@
 		</div>
 		
 	</fieldset>
-</div>
 
