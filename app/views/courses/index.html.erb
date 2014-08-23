@@ -8,7 +8,7 @@
 		<% else %> 	
 			<% current_user.courses.each do |course| %>
 				  <div class="course"> 
-					  <h3 class="col-md-12" style="font-size: 24px;"> 
+					  <h3 class="col-md-12" style="font-size: 22px;"> 
 					  	<%= link_to course.name.upcase , course %> 
 							<div class="pull-right" > 
 								<%= link_to " Edit", edit_course_path(course), :class => 'btn btn-default btn-sm fa fa-cogs' %>
@@ -24,7 +24,7 @@
 					                    	<% if course.grade == 0 %> 
 													  			<p> No Marks Added </p> 
 													  		<% else %> 
-														  		<strong> Grade: </strong> <%= course.grade.round(2)%> %
+														  		<strong> Grade: </strong> <%= course.grade.round(2).to_s.concat("%")%> 
 														  	<% end %> 
 														  </h3>
 					                    <span class="pull-right">
@@ -33,16 +33,16 @@
 					                </div>
 					                <div class="panel-body">
 					                	<!-- DISPLAY COURSE COMPONENTS -->
-					                	<% course.components.each do |components| %>
+					                	<% course.components.each do |component| %>
 						                	<div id="component-overview">
 						                		<span>
-								                	<strong> <%= components.name %> </strong> 
-								                	<em>(<%=components.component_weight%>%)</em>: 
+								                	<strong> <%= component.name %> </strong> 
+								                	<em>(<%=component.component_weight%>%)</em>: 
 								                	<div class="component-grade" >
-									                	<% if components.grade == 0 %>  
-									                		You haven't added any marks yet.
+									                	<% if component.evaluations.count == 0 %>  
+									                		No marks have been added yet.
 									                	<% else %> 
-										                	<%= components.grade%>% 
+										                	<%= component.evaluations.average(:mark) %>%
 								                		<%end%> 
 										              </div> </br>
 							                	</span> 
