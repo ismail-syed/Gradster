@@ -15,12 +15,11 @@
 			<% comp_grade_weight =  ( (component.component_weight.to_f/100) * (Evaluation.where(:component_id => component.id).average(:mark).to_f.round(2)) ).round(3) %> 
 
 			<div class="component">
-		  	
 				<div class="container">
+					<ul id="draggablePanelList" class="list-unstyled">
 				    <div class="row">
 				        <div class="col-md-11">
-				            <div class="panel panel-success">
-				                
+				            <li class="panel panel-success">
 				                <div class="panel-heading clickable">
 				                    <h3 class="panel-title">
 				                        <strong> 
@@ -67,9 +66,10 @@
 						  						</div>
 
 				                </div>
-				            </div>
+				            </li>
 				        </div>
 				    </div>
+				  </ul>
 					</div>
 				</div>
 			</tr>
@@ -90,7 +90,6 @@
 	</div>
 <% end %>
 </div>
-
 
 <%= link_to 'Back', courses_path, :class => "btn btn-info" %> 
 </br> 
