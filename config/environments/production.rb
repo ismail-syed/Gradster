@@ -80,19 +80,19 @@ Gradster::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   # MAILER SETUP
-  config.action_mailer.default_url_options = { :host => 'gradster.herokuapp.com',
-                                                 :protocol => 'http' }
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.smtp_settings = {
-    :address       =>  'smtp.sendgrid.net',
-    :port         =>  '587',
-    :authentication   =>  :plain,
-    :user_name      =>  'app25359942@heroku.com',
-    :password       =>  'vnaefhfs',
-    :domain       =>  'heroku.com',
-    :enable_starttls_auto => true
-  }
+  # config.action_mailer.default_url_options = { :host => 'gradster.herokuapp.com',
+  #                                                :protocol => 'http' }
+  # config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.perform_deliveries = true
+  # config.action_mailer.smtp_settings = {
+  #   :address       =>  'smtp.sendgrid.net',
+  #   :port         =>  '587',
+  #   :authentication   =>  :plain,
+  #   :user_name      =>  'app25359942@heroku.com',
+  #   :password       =>  'vnaefhfs',
+  #   :domain       =>  'heroku.com',
+  #   :enable_starttls_auto => true
+  # }
 
 end
