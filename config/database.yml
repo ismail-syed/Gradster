@@ -23,3 +23,5 @@ production:
   database: gradster
   pool: 5
   timeout: 5000
+  username: 'app25359942@heroku.com'
+  password: 'vnaefhfs'
