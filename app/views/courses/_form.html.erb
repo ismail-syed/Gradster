@@ -1,13 +1,20 @@
 <%= form_for @course, html: {role: :form} do |f| %>
   
   <% if @course.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
+    <div id="error_explanation" class="alert alert-danger">
+    </br>
+      <h2>    
+        <i class="fa fa-exclamation-triangle"></i>
+        <%= pluralize(@course.errors.count, "error") %>: Oops! You've entered something wrong.
+
+      </h2>
       <ul>
       <% @course.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
+    </br>
+    </br>
     </div>
   <% end %>
 
