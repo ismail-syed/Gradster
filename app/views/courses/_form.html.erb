@@ -1,16 +1,12 @@
 <%= form_for @course, html: {role: :form} do |f| %>
-<!-- COURSE NAME -->
-  <div class="field text-center form-group go-right">
-    <%= f.text_field :name, :class => "form-control input-lg", :placeholder => "Course Name", :tabindex => "1" %>
-  </div> </br>
-
-
-    <% if @course.errors.any? %>
+  
+  <% if @course.errors.any? %>
     <div id="error_explanation" class="alert alert-danger">
     </br>
       <h2>    
         <i class="fa fa-exclamation-triangle"></i>
         <%= pluralize(@course.errors.count, "error") %>: Oops! You've entered something wrong.
+
       </h2>
       <ul>
       <% @course.errors.full_messages.each do |msg| %>
@@ -22,6 +18,10 @@
     </div>
   <% end %>
 
+<!-- COURSE NAME -->
+  <div class="field text-center form-group go-right">
+    <%= f.text_field :name, :class => "form-control input-lg", :placeholder => "Course Name", :tabindex => "1" %>
+  </div> </br>
 
   <div class="well"> 
     <div id="comp-title"> 
