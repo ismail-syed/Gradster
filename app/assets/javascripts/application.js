@@ -11,8 +11,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
 //= require bootstrap
+//= cocoon
+//= require_tree .
+
 
 $(document).on('click', '.panel-heading span.clickable', function (e) {
     var $this = $(this);

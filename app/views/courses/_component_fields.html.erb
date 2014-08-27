@@ -19,8 +19,6 @@
 	    </div>
 
 	    <div class=""></br>
-
-
 		    <h4 class="col-md-offset-7">
 		    	 Marks:
 				<%= f.fields_for :evaluations, f.object.evaluations do |eval| %>
@@ -35,11 +33,9 @@
   </br>
 
 		<div class="pull-right">
-			<%= link_to " Remove Component", [@course, f.object], 
-						  	  		method: :delete, :class => 'fa fa-trash-o btn btn-sm btn-danger' %> 
+  	  		<%= link_to_remove_association " Remove Component", f , :class => 'fa fa-trash-o btn btn-sm btn-warning'%>
 		</div>
 
-	</br>	
 </div>
 
 </fieldset>

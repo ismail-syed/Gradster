@@ -1,12 +1,8 @@
 <fieldset class="col-md-offset-2">
 		<div class="col-md-4">
 		  <%= f.number_field :mark, :class => "form-control input-sm", :placeholder => "Mark" %>
-
 		</div>
-
-		<div class="checkbox pull-right">
-			<%= f.hidden_field :_destroy %>
-			<%= f.check_box :_destroy %> 
-			<%= f.label :_destroy, "Delete" %>
+		<div class="trash">
+	  		<%= link_to_remove_association " ", f , :class => 'fa fa-trash-o'%>
 		</div>
 </fieldset>
