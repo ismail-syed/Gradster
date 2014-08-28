@@ -45,3 +45,4 @@ end
 
 gem "font-awesome-rails"
 gem "cocoon"
+gem "omniauth-facebook"
