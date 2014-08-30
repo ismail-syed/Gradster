@@ -1,19 +1,15 @@
 <div class="container">
 	<div class="jumbotron">
 		<h1 class="page-header" align="center">Gradster <small>The online grade calculator</small></h1>
-		<p align="center">
-			Gradster helps you organize your course grades so you don't have to. 
-		</p>
-
+		<p align="center">Gradster helps you organize your course grades so you don't have to. </p>
     </br>
     </br>
-
-
   </div>
 
-
-<!--     <div id="login-box" class="col-md-8 col-md-offset-2">
+  <!-- LOGIN BOX -->
+   <div id="login-box" class="col-md-8 col-md-offset-2">
       <div class="panel panel-default">
+        
         <div class="panel-heading">
           <h2>Sign In <small></small></h2>
         </div>
@@ -21,7 +17,7 @@
         <div class="panel-body">
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
               <div class="row">
-                  <div class="col-md-12">
+                <div class="col-md-12">
                   <form role="form">
                     <fieldset>
                       <hr class="colorgraph">
@@ -41,28 +37,29 @@
                           <input type="submit" class="btn btn-lg btn-success btn-block" value="Sign In">
                         </div>
                       </div>
-                    </br>
+                      </br>
 
-                          <div class="col-md-12 control">
-                              <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
-                                  Don't have an account! 
-                              <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">
-                                  Sign Up Here
-                              </a>
-                              </div>
+                      <div class="col-md-12 control">
+                          <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
+                              Don't have an account! 
+                          <a href="#" onClick="$('#login-box').hide(); $('#signup-box').show()">
+                              Sign Up
+                          </a>
                           </div>
-
-
+                      </div>
                     </fieldset>
                   </form>
                 </div>
               </div>
           <% end %>
         </div>
-    </div>
+      </div>
+  </div>
 
-    <div id="signup-box" class="col-md-8 col-md-offset-2 ">
-      <div class="panel panel-default">
+
+  <!-- SIGN UP BOX -->
+  <div id="signup-box" style="display:none;" class="col-md-8 col-md-offset-2 ">
+      <div class="panel panel-default">        
         <div class="panel-heading">
           <h2>Sign Up <small>It's free and always will be.</small></h2>
         </div>
@@ -111,6 +108,16 @@
                             <input name="commit" type="submit" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="7">
                           </div>
                         </div>
+                        </br>
+                         <div class="col-md-12 control">
+                          <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
+                              Already have an account?
+                          <a href="#" onClick="$('#signup-box').hide(); $('#login-box').show()">
+                              Sign in
+                          </a>
+                          </div>
+                        </div>
+
                       </div>
                     </form>
                 </div>
@@ -118,8 +125,9 @@
 
         </div>
       </div>
-    </div> -->
+  </div>
 
+  </br>
 
 
 
