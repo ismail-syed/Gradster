@@ -36,13 +36,13 @@
 					                	<% course.components.each do |component| %>
 						                	<div id="component-overview">
 						                		<span>
-								                	<strong> <%= component.name %> </strong> 
+								                	<strong> <%= component.name.capitalize %> </strong> 
 								                	<em>(<%=component.component_weight%>%)</em>: 
 								                	<div class="component-grade" >
 									                	<% if component.evaluations.count == 0 %>  
 									                		No marks have been added yet.
 									                	<% else %> 
-										                	<%= component.evaluations.average(:mark) %>%
+										                	<%= component.evaluations.average(:mark).round(3) %>%
 								                		<%end%> 
 										              </div> </br>
 							                	</span> 
