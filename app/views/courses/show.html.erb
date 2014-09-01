@@ -15,10 +15,9 @@
 			<% comp_grade_weight =  ( (component.component_weight.to_f/100) * (Evaluation.where(:component_id => component.id).average(:mark).to_f.round(2)) ).round(3) %> 
 
 			<div class="component">
-				<div class="container">
 					<ul id="draggablePanelList" class="list-unstyled">
 				    <div class="row">
-				        <div class="col-md-11">
+				        <div class="col-md-12">
 				            <li class="panel panel-success">
 				                <div class="panel-heading clickable">
 				                    <h3 class="panel-title">
@@ -70,25 +69,25 @@
 				        </div>
 				    </div>
 				  </ul>
-					</div>
-				</div>
+			</div>
+	
 			</tr>
 		<% component.save %> 
 	<% end %>
-	<!-- FINAL COURSE GRADE -->
-<% if (@course.components.all.count == 0)  %> <!-- No components created -->
-	<div class="add-comp-message"X> 
-		<span> <h3> Edit your course to get started! </h3> </span>				 
-	</div>
-<% else %>
-	<div class="final-grade">
-		<% unless component_counter == 0 %> 
-			<% @course.grade =  (100 *(@course.grade.to_f / component_counter.to_f)).round(2) %>
-		<h2> Grade: <%=  @course.grade.to_f.round(2) %>	</h2>   
-		<% end %> 
-		<% @course.save %> 				 
-	</div>
-<% end %>
+		<!-- FINAL COURSE GRADE -->
+		<% if (@course.components.all.count == 0)  %> <!-- No components created -->
+			<div class="add-comp-message"X> 
+				<span> <h3> Edit your course to get started! </h3> </span>				 
+			</div>
+		<% else %>
+			<div class="final-grade">
+				<% unless component_counter == 0 %> 
+					<% @course.grade =  (100 *(@course.grade.to_f / component_counter.to_f)).round(2) %>
+				<h2> Grade: <%=  @course.grade.to_f.round(2) %>	</h2>   
+				<% end %> 
+				<% @course.save %> 				 
+			</div>
+		<% end %>
 </div>
 
 <%= link_to 'Back', courses_path, :class => "btn btn-info" %> 
