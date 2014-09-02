@@ -18,4 +18,4 @@
 .env
 Procfile
 
-/config/local_env.yml
+/local_env.yml
