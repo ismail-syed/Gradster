@@ -1,10 +1,12 @@
 Gradster::Application.routes.draw do
-  devise_for :users, :skip => [:sessions]
-  as :user do
-    get 'static_pages#homepage' => 'devise/sessions#new', :as => :new_user_session
-    post 'signin' => 'devise/sessions#create', :as => :user_session
-    delete 'static_pages#homepage' => 'devise/sessions#destroy', :as => :destroy_user_session
-  end
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  # ,
+  # :skip => [:sessions]
+  # as :user do
+  #   get 'static_pages#homepage' => 'devise/sessions#new', :as => :new_user_session
+  #   post 'signin' => 'devise/sessions#create', :as => :user_session
+  #   delete 'static_pages#homepage' => 'devise/sessions#destroy', :as => :destroy_user_session
+  # end
   
   get 'static_pages/learn_more' => 'static_pages#learn_more'
   

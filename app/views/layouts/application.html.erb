@@ -29,7 +29,6 @@
 				<div class="navbar-collapse collapse">
 					<ul class="navbar-right navbar-nav nav"> 
 			      <li> <%= link_to "Learn More" , "/static_pages/learn_more" %> </li>
-			      <li> <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %> </li>
 
 						<% if user_signed_in? %>
 							<li> <%= link_to current_user.profile_name.capitalize , edit_user_registration_path %> </li>
